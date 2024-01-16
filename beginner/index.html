@@ -19,7 +19,8 @@
     const root = document.querySelector('#root');
     let count = 0;
 
-    const Btn = (
+    //컴포넌트를 렌더하려면 함수형으로 바꿔야함
+    const Btn = () => (
       <button
         id="btn"
         type="button"
@@ -33,22 +34,16 @@
       </button>
     );
 
-    //React.createElement('태그명','{속성들/이벤트리스너}','텍스트노드, [추가될 엘리먼트들1 , 2 ...]')
-    // const text = React.createElement('span', { id: 'text' }, `클릭한 숫자:  ${count}`);
+    const Text = () => <span id="text">클릭한 숫자:</span>;
 
-    const Text = <span id="text">클릭한 숫자:</span>;
-    const Container = React.createElement('div', null, [Text, Btn]);
-
-    // const Div = (
-    //   <div>
-    //     <Text />
-    //     <Btn />
-    //   </div>
-    // );
-    ReactDOM.render(Container, root);
-
-    //18버전에서는 다음처럼.
-    //ReactDOM.createRoot(root).render(Container, root);
+    const Container = () => (
+      //컴포넌트를 함수로 교체가 핵심 컴포넌트의 첫문자는 대문자. 소문자면 jsx는 태그로 인식함
+      <div>
+        <Text />
+        <Btn />
+      </div>
+    );
+    ReactDOM.render(<Container />, root);
   </script>
 </html>
 
