@@ -19,15 +19,24 @@
     const root = document.querySelector('#root');
 
     const App = () => {
-      const [counter, modifier] = React.useState(0);
+      const [counter, setCounter] = React.useState(0);
       // const [a, b ..] 로 배열의 각각의 값을 할당한다. array[0] 보다 간단.
       //useState('데이터값',함수) 두번째 인자 함수로 데이터값을 바꿀 수 있다
-      console.log(counter);
+
+      const onClickToCountUp = () => {
+        setCounter(counter + 1);
+        // counter++는 const인 counter를 직접변경하기때문에 const인 경우에는 동작하지 않는다.
+        // counter++는 counter값이 바뀌는데 비해 counter + 1 은 counter 가 바뀌지않고 새롭게 저장되기에
+
+        //새 값을 가지고 렌더링을 해야함
+        console.log(counter);
+      };
+
       return (
         //변수값 전달 {}
         <section>
-          <span id="text">클릭한 숫자: 0</span>
-          <button id="btn" type="button" style={{ 'background-color': 'blue', color: '#fff', 'margin-left': '10px' }}>
+          <span id="text">클릭한 숫자: {counter}</span>
+          <button id="btn" type="button" onClick={onClickToCountUp} style={{ 'background-color': 'blue', color: '#fff', 'margin-left': '10px' }}>
             버튼
           </button>
         </section>
