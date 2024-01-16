@@ -17,28 +17,24 @@
   <!-- jsx문법을 브라우저가 이해할 수 있게 변환하는 babel -->
   <script type="text/babel">
     const root = document.querySelector('#root');
-    let counter = 0;
 
-    const fnClickToCountUp = () => {
-      counter++;
-      render();
+    const App = () => {
+      const [counter, modifier] = React.useState(0);
+      // const [a, b ..] 로 배열의 각각의 값을 할당한다. array[0] 보다 간단.
+      //useState('데이터값',함수) 두번째 인자 함수로 데이터값을 바꿀 수 있다
+      console.log(counter);
+      return (
+        //변수값 전달 {}
+        <section>
+          <span id="text">클릭한 숫자: 0</span>
+          <button id="btn" type="button" style={{ 'background-color': 'blue', color: '#fff', 'margin-left': '10px' }}>
+            버튼
+          </button>
+        </section>
+      );
     };
 
-    const render = () => {
-      ReactDOM.render(<Container />, root);
-    };
-
-    const Container = () => (
-      //변수값 전달 {}
-      <section>
-        <span id="text">클릭한 숫자: {counter}</span>
-        <button id="btn" type="button" onClick={fnClickToCountUp} style={{ 'background-color': 'blue', color: '#fff', 'margin-left': '10px' }}>
-          버튼
-        </button>
-      </section>
-    );
-
-    render();
+    ReactDOM.render(<App />, root);
   </script>
 </html>
 
