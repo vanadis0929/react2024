@@ -17,37 +17,32 @@
   <!-- jsx문법을 브라우저가 이해할 수 있게 변환하는 babel -->
   <script type="text/babel">
     const root = document.querySelector('#root');
-    let count = 0;
+    let counter = 0;
 
-    //컴포넌트를 렌더하려면 함수형으로 바꿔야함
-    const Btn = () => (
-      <button
-        id="btn"
-        type="button"
-        style={{ 'background-color': 'blue', color: '#fff', 'margin-left': '10px' }}
-        onClick={(event) => {
-          count++;
-          console.log(event.type);
-        }}
-      >
-        버튼
-      </button>
-    );
+    const fnClickToCountUp = () => {
+      counter++;
+      render();
+    };
 
-    const Text = () => <span id="text">클릭한 숫자:</span>;
+    const render = () => {
+      ReactDOM.render(<Container />, root);
+    };
 
     const Container = () => (
-      //컴포넌트를 함수로 교체가 핵심 컴포넌트의 첫문자는 대문자. 소문자면 jsx는 태그로 인식함
-      <div>
-        <Text />
-        <Btn />
-      </div>
+      //변수값 전달 {}
+      <section>
+        <span id="text">클릭한 숫자: {counter}</span>
+        <button id="btn" type="button" onClick={fnClickToCountUp} style={{ 'background-color': 'blue', color: '#fff', 'margin-left': '10px' }}>
+          버튼
+        </button>
+      </section>
     );
-    ReactDOM.render(<Container />, root);
+
+    render();
   </script>
 </html>
 
 <!-- 
 
-
+클릭함수가 호출될때마다 렌더를 하기 때문에 성능상 좋은방법은아님, counter만 리렌더할수 있는 방법이 필요.
 -->
