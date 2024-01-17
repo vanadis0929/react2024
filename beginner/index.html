@@ -19,29 +19,54 @@
     const root = document.querySelector('#root');
 
     const App = () => {
-      //초기값은 반드시 빈값을 선언해줘야 함 (uncontrolled value)
-      const [minutes, setMinutes] = React.useState();
+      //초기값은 반드시 빈값을 선언해줘야 함 (input은 uncontrolled value)
+      const [minutes, setMinutes] = React.useState('');
+      const [hours, setHours] = React.useState('');
+      const [isFilpped, setFilpped] = React.useState(false);
 
-      const onChange = (event) => {
-        // console.log(event);
-        // console.log(event.target.value);
+      const onChangeMinutes = (event) => {
         setMinutes(event.target.value);
       };
+      const onChangeHours = (event) => {
+        setHours(event.target.value);
+      };
+
+      const onReset = () => {
+        setMinutes('');
+        setHours('');
+      };
+
+      const onFilp = () => {
+        onReset();
+        //현재 state의 부정의 값을 받아옴 토글과 같은 효과.
+        setFilpped((current) => !current);
+      };
+
+      const labelStyle = { display: 'inherit', gap: 'inherit', alignItems: 'center' };
 
       return (
         <section>
           <h1>단위 변환기</h1>
-          <h2>{minutes}</h2>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <label htmlFor="inp_minite" style={{ display: 'inherit', gap: 'inherit' }}>
-              분 입력
-              <input type="text" onChange={onChange} value={minutes} id="inp_minite" placeholder="분" />
+
+          <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <label htmlFor="inp_minite" style={labelStyle}>
+              분:
+              <input type="number" disabled={isFilpped == true ? true : false} onChange={onChangeMinutes} value={isFilpped ? hours * 60 : minutes} id="inp_minite" placeholder="분" />
             </label>
-            <label htmlFor="inp_hour" style={{ display: 'inherit', gap: 'inherit' }}>
-              시간 입력
-              <input type="text" id="inp_hour" placeholder="시간" />
+            <label htmlFor="inp_hour" style={labelStyle}>
+              시간:
+              <input type="number" disabled={isFilpped == false ? true : false} onChange={onChangeHours} value={!isFilpped ? Math.round(minutes / 60) : hours} id="inp_hour" placeholder="시간" />
             </label>
+            입니다.
           </div>
+
+          <button type="reset" onClick={onReset}>
+            초기화
+          </button>
+
+          <button type="button" onClick={onFilp}>
+            분 / 시간 반전
+          </button>
         </section>
       );
     };
@@ -49,8 +74,3 @@
     ReactDOM.createRoot(root).render(<App />);
   </script>
 </html>
-
-<!-- 
-
-클릭함수가 호출될때마다 렌더를 하기 때문에 성능상 좋은방법은아님, counter만 리렌더할수 있는 방법이 필요.
--->
