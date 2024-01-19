@@ -12,6 +12,7 @@
 
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/prop-types@15.8.1/prop-types.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- jsx문법을 브라우저가 이해할 수 있게 변환하는 babel -->
@@ -19,19 +20,39 @@
     const root = document.querySelector('#root');
 
     //컴포넌트의 인자값으로 props를 받는다. 이는 객체이며 인자를 props가 아닌, { } 형식으로 받으면 props.arg .. 등으로 사용하지 않아도 된다
-    const Button = ({ text, size }) => {
+    const Button = ({ text, size, fontSize }) => {
       return (
-        <button type="button" style={{ padding: '20px', border: 'none', borderRadius: '10px', backgroundColor: 'red', color: '#fff', height: size == 'medium' ? '30px' : '50px', boxSizing: 'content-box' }}>
+        <button
+          type="button"
+          style={{
+            padding: '20px',
+            border: 'none',
+            borderRadius: '10px',
+            backgroundColor: 'red',
+            color: '#fff',
+            height: size == 'medium' ? '30px' : '50px',
+            boxSizing: 'content-box',
+            fontSize: fontSize,
+          }}
+        >
           {text}
         </button>
       );
+    };
+
+    //props 전달시 오류를 막기위해 각 props 별로 타입을 정의하고 필수 값등의 선언을 함, 예외를 막기위해서
+
+    Button.propTypes = {
+      text: PropTypes.string.isRequired, // isRequired는 필수로 받아야하는 값. 받지 않으면 에러를 출력함,
+      size: PropTypes.string,
+      fontSize: PropTypes.number,
     };
 
     const App = () => {
       return (
         <div style={{ display: 'flex', gap: '20px' }}>
           <Button text="save" size="medium" />
-          <Button text="confirm" size="large" />
+          <Button text="confirm" size="large" fontSize="4vw" />
         </div>
       );
     };
