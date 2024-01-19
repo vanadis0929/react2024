@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <main id="root"></main>
+  </body>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- jsx문법을 브라우저가 이해할 수 있게 변환하는 babel -->
+  <script type="text/babel">
+    const root = document.querySelector('#root');
+
+    const MinutesToHours = () => {
+      const unit = 60;
+      //초기값은 반드시 빈값을 선언해줘야 함 (input은 uncontrolled value)
+      const [amount, setAmount] = React.useState('');
+
+      const [isInverted, setInverted] = React.useState(false);
+
+      const onChangeAmount = (event) => {
+        setAmount(event.target.value);
+      };
+
+      const onReset = () => {
+        setAmount('');
+      };
+
+      const onToggleInvert = () => {
+        onReset();
+        setInverted((current) => !current);
+      };
+
+      const labelStyle = { display: 'inherit', gap: 'inherit', alignItems: 'center' };
+      return (
+        <section className="MinutesToHours">
+          <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <label htmlFor="inp_minite" style={labelStyle}>
+              분:
+              <input type="number" disabled={isInverted} onChange={onChangeAmount} value={isInverted ? amount * unit : amount} id="inp_minite" placeholder="분" />
+            </label>
+            <label htmlFor="inp_hour" style={labelStyle}>
+              시간:
+              <input type="number" disabled={!isInverted} onChange={onChangeAmount} value={!isInverted ? Math.round(amount / unit) : amount} id="inp_hour" placeholder="시간" />
+            </label>
+            입니다.
+          </div>
+
+          <button type="reset" onClick={onReset}>
+            초기화
+          </button>
+
+          <button type="button" onClick={onToggleInvert}>
+            {isInverted ? '분 > 시간 전환' : '시간 > 분 전환'}
+          </button>
+        </section>
+      );
+    };
+
+    const KmToMiles = () => {
+      //초기값은 반드시 빈값을 선언해줘야 함 (input은 uncontrolled value)
+
+      const mileUnit = 0.62;
+
+      const [amount, setAmount] = React.useState('');
+
+      const [isInverted, setInverted] = React.useState(false);
+
+      const onChangeAmount = (event) => {
+        setAmount(event.target.value);
+      };
+
+      const onReset = () => {
+        setAmount('');
+      };
+
+      const onToggleInvert = () => {
+        onReset();
+        setInverted((current) => !current);
+      };
+
+      const labelStyle = { display: 'inherit', gap: 'inherit', alignItems: 'center' };
+      return (
+        <section className="KmToMiles">
+          <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <label htmlFor="inp_minite" style={labelStyle}>
+              Km:
+              <input type="number" disabled={isInverted} onChange={onChangeAmount} value={isInverted ? (amount / mileUnit).toFixed(3) : amount} id="inp_minite" placeholder="Km" />
+            </label>
+            <label htmlFor="inp_hour" style={labelStyle}>
+              Miles:
+              <input type="number" disabled={!isInverted} onChange={onChangeAmount} value={!isInverted ? (amount * mileUnit).toFixed(3) : amount} id="inp_hour" placeholder="Miles" />
+            </label>
+            입니다.
+          </div>
+
+          <button type="reset" onClick={onReset}>
+            초기화
+          </button>
+
+          <button type="button" onClick={onToggleInvert}>
+            {isInverted ? 'Km > Miles 전환' : 'Miles > Km 전환'}
+          </button>
+        </section>
+      );
+    };
+
+    const App = () => {
+      const [type, setType] = React.useState('0');
+
+      const onSelectedType = (event) => {
+        setType(event.target.value);
+        console.log(type);
+      };
+
+      return (
+        <div>
+          <h1>단위 변환기</h1>
+          <select onChange={onSelectedType} style={{ marginBottom: '40px' }}>
+            <option value="0">분 &harr; 시간</option>
+            <option value="1">Km &harr; Miles</option>
+          </select>
+          {type == 0 ? <MinutesToHours /> : null}
+          {type == 1 ? <KmToMiles /> : null}
+        </div>
+      );
+    };
+
+    ReactDOM.createRoot(root).render(<App />);
+  </script>
+</html>
