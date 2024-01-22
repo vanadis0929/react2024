@@ -1,0 +1,12 @@
+.el_btn {
+  border-radius: 10px;
+  border: 1px solid currentColor;
+  margin: 0;
+  padding: 0;
+  padding-inline: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  text-align: center;
+}
