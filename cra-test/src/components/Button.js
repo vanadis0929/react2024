@@ -5,9 +5,15 @@ import PropTypes from 'prop-types';
 // module.css / module.sass / css-in-js (styled component) 등의 방법이 있음
 import styles from '../css/Button.module.css';
 
-const Button = ({ type = 'button', text, color, onclick }) => {
+const Button = ({ type = 'button', text, color, onclick, onsubmit }) => {
   return (
-    <button onClick={onclick} className={styles.el_btn} type={type} style={{ color }}>
+    <button
+      onClick={onclick}
+      onSubmit={onsubmit}
+      className={styles.el_btn}
+      type={type}
+      style={{ color }}
+    >
       {text}
     </button>
   );
@@ -16,6 +22,7 @@ const Button = ({ type = 'button', text, color, onclick }) => {
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   onclick: PropTypes.func,
+  onsubmit: PropTypes.func,
   color: PropTypes.string,
 };
 
