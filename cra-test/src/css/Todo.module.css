@@ -1,0 +1,14 @@
+.bl_todo {
+  counter-reset: todonumber;
+}
+
+.bl_todo > dd {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.bl_todo > dd:before {
+  content: counter(todonumber) '.';
+  counter-increment: todonumber;
+}
