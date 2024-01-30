@@ -1,0 +1,15 @@
+.bl_movieList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  > li {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.bl_movieList figure img {
+  aspect-ratio: 3/4.5;
+  max-width: 100%;
+  vertical-align: top;
+}
