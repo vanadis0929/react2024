@@ -30,19 +30,26 @@ function App() {
       {loading ? (
         <h1>영화 정보 받아오는 중 ....</h1>
       ) : (
-        <ul className={movieAppStyles.bl_movieList}>
+        <div className={movieAppStyles.bl_movieList}>
           {movies.map((current) => {
             return (
-              <li key={current.id}>
+              <div key={current.id}>
                 <figure>
-                  <img src={current.medium_cover_image} alt={current.title} />
-                  <figcaption> {current.title}</figcaption>
+                  <img src={current.medium_cover_image} alt={`${current.title}'s poster`} />
+                  <figcaption> {current.title} </figcaption>
                 </figure>
-                <dl>{/* 부수적인 정보 / 링크(링크는 fipcation에) */}</dl>
-              </li>
+                <ul>
+                  {current.genres
+                    ? current.genres.map((genre) => {
+                        return <li key={genre}>{genre}</li>;
+                      })
+                    : null}
+                </ul>
+                <p>{current.summary}</p>
+              </div>
             );
           })}
-        </ul>
+        </div>
       )}
     </section>
   );

@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     color: #000;
     font-size: 10px;
     -webkit-text-size-adjust: none;
-    overflow: hidden;
+    
   }
 
   body {
@@ -33,8 +33,6 @@ const GlobalStyle = createGlobalStyle`
     font: 1.4rem / 1.2 system-ui, sans-serif;
     word-break: keep-all;
     word-wrap: break-word;
-    overflow: hidden;
-    background-color: #fff;
   }
 
   iframe,
@@ -191,10 +189,10 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 root.render(
-  <React.StrictMode>
-    <React.Fragment>
-      <GlobalStyle />
-      <App />
-    </React.Fragment>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <React.Fragment>
+    <GlobalStyle />
+    <App />
+  </React.Fragment>
+  // </React.StrictMode>
 );
