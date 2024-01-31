@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import propTypes from 'prop-types';
+
 import Movie from '../components/Movie';
-import movieAppStyles from './css/movieAppStyles.module.css';
+import movieAppStyles from '../css/movieAppStyles.module.css';
 
 const Home = () => {
   const MOVIEAPIURL = 'https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year';
@@ -45,13 +45,6 @@ const Home = () => {
       )}
     </section>
   );
-};
-
-Movie.propTypes = {
-  poster: propTypes.string.isRequired,
-  title: propTypes.string.isRequired,
-  genres: propTypes.arrayOf(propTypes.string).isRequired,
-  summary: propTypes.string.isRequired,
 };
 
 export default Home;

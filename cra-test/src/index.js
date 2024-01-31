@@ -183,10 +183,7 @@ const GlobalStyle = createGlobalStyle`
     color: #9e9e9e;
   }
 
-  *:focus,
-  *:focus-visible {
-    outline-color: transparent;
-  }
+
 `;
 root.render(
   // <React.StrictMode>
