@@ -1,11 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 
-import Button from './components/Button';
+// import Button from './components/Button';
+import Movie from './components/Movie';
 
 import movieAppStyles from './css/movieAppStyles.module.css';
 
 function App() {
-  const MOVIEAPIURL = 'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year';
+  const MOVIEAPIURL = 'https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year';
 
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
@@ -31,28 +33,28 @@ function App() {
         <h1>영화 정보 받아오는 중 ....</h1>
       ) : (
         <div className={movieAppStyles.bl_movieList}>
-          {movies.map((current) => {
+          {movies.map((currentMovie) => {
             return (
-              <div key={current.id}>
-                <figure>
-                  <img src={current.medium_cover_image} alt={`${current.title}'s poster`} />
-                  <figcaption> {current.title} </figcaption>
-                </figure>
-                <ul>
-                  {current.genres
-                    ? current.genres.map((genre) => {
-                        return <li key={genre}>{genre}</li>;
-                      })
-                    : null}
-                </ul>
-                <p>{current.summary}</p>
-              </div>
+              <Movie
+                key={currentMovie.id}
+                poster={currentMovie.medium_cover_image}
+                title={currentMovie.title}
+                genres={currentMovie.genres}
+                summary={currentMovie.summary}
+              />
             );
-          })}
+          })}{' '}
         </div>
       )}
     </section>
   );
 }
+
+Movie.propTypes = {
+  poster: propTypes.string.isRequired,
+  title: propTypes.string.isRequired,
+  genres: propTypes.arrayOf(propTypes.string).isRequired,
+  summary: propTypes.string.isRequired,
+};
 
 export default App;
