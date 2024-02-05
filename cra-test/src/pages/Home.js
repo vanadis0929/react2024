@@ -34,6 +34,7 @@ const Home = () => {
             return (
               <Movie
                 key={currentMovie.id}
+                id={currentMovie.id}
                 poster={currentMovie.medium_cover_image}
                 title={currentMovie.title}
                 genres={currentMovie.genres}
