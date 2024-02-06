@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react';
 import Movie from '../components/Movie';
 import movieAppStyles from '../css/movieAppStyles.module.css';
 
+import Loading from '../components/Loading';
+
 const Home = () => {
   const MOVIEAPIURL = 'https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year';
 
-  const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
 
   //fetch , then 을 개선한 async / await 문법. (비동기)
@@ -24,6 +25,7 @@ const Home = () => {
 
   console.log(movies);
 
+  c;
   return (
     <section>
       {loading ? (

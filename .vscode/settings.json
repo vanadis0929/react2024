@@ -18,5 +18,9 @@
     "titleBar.inactiveBackground": "#f4815b99",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "#f4815b"
+  "peacock.color": "#f4815b",
+  "files.exclude": {
+    //"beginner": true,
+    "mongofood": true
+  }
 }
