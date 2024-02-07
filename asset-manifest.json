@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/%20//github.com/vanadis0929/react2024/static/css/main.08aceb95.css",
+    "main.js": "/%20//github.com/vanadis0929/react2024/static/js/main.04bf2bd5.js",
+    "static/media/loading.svg": "/%20//github.com/vanadis0929/react2024/static/media/loading.ab52a03ae0a09afa6510517a41406dfe.svg",
+    "index.html": "/%20//github.com/vanadis0929/react2024/index.html",
+    "main.08aceb95.css.map": "/%20//github.com/vanadis0929/react2024/static/css/main.08aceb95.css.map",
+    "main.04bf2bd5.js.map": "/%20//github.com/vanadis0929/react2024/static/js/main.04bf2bd5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.08aceb95.css",
+    "static/js/main.04bf2bd5.js"
+  ]
+}
