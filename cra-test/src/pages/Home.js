@@ -16,7 +16,7 @@ const Home = () => {
 
     const json = await response.json();
     setMovies(json.data.movies);
-    setLoading(false);
+    //setLoading(false);
   };
 
   useEffect(() => {
@@ -25,11 +25,10 @@ const Home = () => {
 
   console.log(movies);
 
-  c;
   return (
     <section>
-      {loading ? (
-        <h1>영화 정보 받아오는 중 ....</h1>
+      {movies.length === 0 ? (
+        <Loading />
       ) : (
         <div className={movieAppStyles.bl_movieList}>
           {movies.map((currentMovie) => {
@@ -43,7 +42,7 @@ const Home = () => {
                 summary={currentMovie.summary}
               />
             );
-          })}{' '}
+          })}
         </div>
       )}
     </section>

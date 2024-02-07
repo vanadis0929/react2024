@@ -1,14 +1,34 @@
-import { useState } from 'react';
-import propTypes from 'prop-types';
+import styled from 'styled-components';
 
-const Loading = ({ isLoading }) => {
-  const [loading, setLoading] = useState(true);
+import loadingAnimation from '../asset/loading.svg';
 
-  return <h1>{Loading ? '로딩중' : null}</h1>;
-};
+const Container = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 3rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(21px);
 
-Loading.propTypes = {
-  setLoading: propTypes.func.isRequired,
+  img {
+    width: 300px;
+    display: block;
+  }
+`;
+
+const Loading = () => {
+  return (
+    <Container>
+      <img src={loadingAnimation} alt="" /> 불러오는 중 ....
+    </Container>
+  );
 };
 
 export default Loading;
