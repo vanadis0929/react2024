@@ -266,11 +266,11 @@ function App() {
         <Emoji as="div">111</Emoji>
       </Box>
       ddd
-      {/* <Button type="button" bordercolor="green" bgcolor="red" />
-      <ButtonCircle bgcolor="red" />
+      <Button type="button" />
+     
       <Button type="reset" as="a" href="#none">
         ffff
-      </Button> */}
+      </Button>
     </Fragment>
   );
 }

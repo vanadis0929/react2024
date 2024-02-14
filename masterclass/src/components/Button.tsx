@@ -1,17 +1,14 @@
 import styled from 'styled-components';
 
-export const Button = styled.button.attrs((props) => ({
-  type: props.type,
-  placeholder: props.ph,
-}))`
+export const Button = styled.button`
   display: inline-flex;
   place-items: center;
   place-content: center;
-  border: 1px solid ${(props) => props.bordercolor};
-  background-color: ${(props) => props.bgcolor};
+  border: 1px solid #000;
+  background-color: transparent;
   width: 100px;
   aspect-ratio: 1/1;
-  border-radius: ${(props) => props.radius};
+Z
 `;
 
 export const ButtonCircle = styled(Button)`
