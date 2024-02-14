@@ -20,7 +20,8 @@
   },
   "peacock.color": "#f4815b",
   "files.exclude": {
-    //"beginner": true,
-    "mongofood": true
+    "beginner": true,
+    "mongofood": true,
+    "cra-test": true
   }
 }
