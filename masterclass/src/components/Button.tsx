@@ -1,14 +1,22 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+interface Props {
+  bordercolor?: string;
+  bgcolor?: string;
+  radius?: string;
+  type?: string;
+  href?: string;
+}
+
+export const Button = styled.button<Props>`
   display: inline-flex;
   place-items: center;
   place-content: center;
-  border: 1px solid #000;
-  background-color: transparent;
+  border: 1px solid ${(props) => props.bordercolor};
+  background-color: ${(props) => props.bgcolor};
   width: 100px;
   aspect-ratio: 1/1;
-Z
+  border-radius: ${(props) => props.radius};
 `;
 
 export const ButtonCircle = styled(Button)`

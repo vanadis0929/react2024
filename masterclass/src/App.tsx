@@ -1,9 +1,12 @@
 import { Fragment } from 'react';
 
-import { createGlobalStyle, keyframes, styled } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-import { Button, ButtonCircle } from './components/Button';
+// import { Button, ButtonCircle } from './components/Button';
 
+// import Circle from './components/Circle';
+
+import Form from './components/Form';
 const root = `
 :root {
   --colorPrimary10: #e1001e;
@@ -226,51 +229,22 @@ const Global = createGlobalStyle`
     display: flex;
     place-content: center;
     place-items: center;
-    background-color: ${(props) => props.theme.bgColor} ;
-    color: ${(props) => props.theme.textColor} ;
-  }
-`;
+    background-color: ${(props) => props.theme.bgColor};
+    color: ${(props) => props.theme.textColor};
 
-//animation keyframe 작성 및 적용
-const anime = keyframes`
-  from { rotate: 0deg; border-radius: 0}
-  to { rotate: 360deg;border-radius: 100% }
-`;
 
-const Emoji = styled.span`
-  font-size: 50px;
-`;
 
-const Box = styled.div`
-  width: 100px;
-  aspect-ratio: 1/1;
-  background-color: tomato;
-  //animation keyframe 작성 및 적용
-  animation: ${anime} 1s infinite linear;
-
-  &:before {
-    content: 'fff';
   }
 
-  // 태그명이 아닌 styled component 자체를 불러오는것도 가능
-  &:hover > ${Emoji} {
-    background-color: yellow;
-  }
 `;
 
 function App() {
   return (
     <Fragment>
       <Global />
-      <Box>
-        <Emoji as="div">111</Emoji>
-      </Box>
-      ddd
-      <Button type="button" />
-     
-      <Button type="reset" as="a" href="#none">
-        ffff
-      </Button>
+      <main>
+        <Form />
+      </main>
     </Fragment>
   );
 }
