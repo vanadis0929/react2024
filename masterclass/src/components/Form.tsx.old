@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { styled, createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import { Button } from './Button';
 
@@ -7,10 +7,10 @@ const Global = createGlobalStyle`
 	form { 
 		display: flex; gap: 20px; 
 
-		input { padding-inline: 10px; align-self: center; }
+
 
 		input {
-
+      padding-inline: 10px; align-self: center; 
 			background-color: ${(props) => props.theme.bgColor} ;
 			color: ${(props) => props.theme.textColor} ;
 			border-color: ${(props) => props.theme.textColor} ;
