@@ -7,6 +7,7 @@ import Root from './Root';
 import NotFound from './pages/NotFound';
 import User from './pages/User';
 import Error from './components/ErrorComponent';
+import Followers from './pages/users/Followers';
 /* 
 createBrowserRouter
 
@@ -35,6 +36,12 @@ const Router = createBrowserRouter([
       {
         path: 'users/:userId',
         element: <User />,
+        children: [
+          {
+            path: 'followers',
+            element: <Followers />,
+          },
+        ],
       },
     ],
   },
